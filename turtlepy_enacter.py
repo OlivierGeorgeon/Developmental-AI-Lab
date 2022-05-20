@@ -38,7 +38,7 @@ class TurtlePyEnacter:
         self.turtle.speed(1)
 
     def outcome(self, action):
-        """ Enacting an action and returning the outcome """
+        """ Enacting an action and returning the oc """
         for i in range(10):
             _outcome = 0
             if action == 0:
@@ -56,7 +56,7 @@ class TurtlePyEnacter:
                 self.turtle.right(4)
                 self.turtle.forward(2)
 
-            # Bump on screen edge and return outcome 1
+            # Bump on screen edge and return oc 1
             (screen_x, screen_y) = self.screen.screensize()
             if self.turtle.xcor() < -SCREEN_WIDTH/2:
                 self.turtle.goto(-SCREEN_WIDTH/2, self.turtle.ycor())

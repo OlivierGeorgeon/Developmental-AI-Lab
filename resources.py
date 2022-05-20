@@ -9,7 +9,7 @@ class Interaction:
         self.valence = valence
 
     def __str__(self):
-        """ Print interaction in the form <action><outcome>(<valence>) """
+        """ Print interaction in the form <action><oc>(<valence>) """
         return str(self.action) + str(self.outcome) + "(" + str(self.valence) + ")"
 
     def __hash__(self):
@@ -17,7 +17,7 @@ class Interaction:
         return self.action * 10 + self.outcome
 
     def __eq__(self, other):
-        """ Interactions are equal if they have the same action and the same outcome """
+        """ Interactions are equal if they have the same action and the same oc """
         if isinstance(other, self.__class__):
             return (self.action == other.action) and (self.outcome == other.outcome)
         else:

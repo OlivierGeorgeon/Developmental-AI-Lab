@@ -25,7 +25,7 @@ class OsoyooCarEnacter:
         self.osoyoo_car_window.flip()
 
     def outcome(self, action):
-        """ Enacting an action and returning the outcome """
+        """ Enacting an action and returning the oc """
         # Trigger the asynchronous communication
         if action == 0:
             self.controller.enact('8')
@@ -34,7 +34,7 @@ class OsoyooCarEnacter:
         if action > 1:
             self.controller.enact('3')
 
-        # Wait for the outcome while processing pyglet events
+        # Wait for the oc while processing pyglet events
         while self.controller.enact_step < 2:
             # Inspired by https://stackoverflow.com/questions/61217265/
             pyglet.clock.tick()
@@ -50,7 +50,7 @@ class OsoyooCarEnacter:
         self.osoyoo_car_window.on_draw()
         self.osoyoo_car_window.flip()
 
-        # Return the outcome based on floor change
+        # Return the oc based on floor change
         outcome = 0
         json_outcome = json.loads(self.controller.outcome_string)
         if 'floor' in json_outcome:
