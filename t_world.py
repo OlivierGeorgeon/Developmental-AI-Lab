@@ -18,32 +18,32 @@ class Agent:
         self.prec: int = 0
         self.flag = False
 
-    def action(self, oc):
-        self.prec = oc
+    def action(self, outcome):
+        self.prec = outcome
         """ tracing the previous cycle """
         if self.counter == -1:
             if self._action is not None:
                 print("Action: " + str(self._action) +
                       ", Anticipation: " + str(self.anticipated_outcome) +
-                      ", Outcome: " + str(oc) +
+                      ", Outcome: " + str(outcome) +
                       ", Ennui: " + str(self.counter+1) +
-                      ", Satisfaction: (anticipation: " + str(self.anticipated_outcome == oc) +
-                      ", valence: " + str(self.hedonist_table[self._action][oc]) + ")")
+                      ", Satisfaction: (anticipation: " + str(self.anticipated_outcome == outcome) +
+                      ", valence: " + str(self.hedonist_table[self._action][outcome]) + ")")
         else:
             print("Action: " + str(self._action) +
                   ", Anticipation: " + str(self.anticipated_outcome) +
-                  ", Outcome: " + str(oc) +
+                  ", Outcome: " + str(outcome) +
                   ", Ennui: " + str(self.counter) +
-                  ", Satisfaction: (anticipation: " + str(self.anticipated_outcome == oc) +
-                  ", valence: " + str(self.hedonist_table[self._action][oc]) + ")")
+                  ", Satisfaction: (anticipation: " + str(self.anticipated_outcome == outcome) +
+                  ", valence: " + str(self.hedonist_table[self._action][outcome]) + ")")
 
         """ Computing the next action to enact """
         # TODO: Implement the agent's decision mechanism
-        if oc == self.prec:
+        if outcome == self.prec:
             if self.counter == -1:
                 self.counter = 0
             else:
-                x: int = random.randint(10, 35)
+                x: int = 15
                 if self.flag:
                     self.counter -= x
                     self._action = 1
@@ -63,7 +63,7 @@ class Agent:
 
 
 class Environment1:
-    """ In Environment 1, action 0 yields oc 0, action 1 yields oc 1 """
+    """ In Environment 1, action 0 yields outcome 0, action 1 yields outcome 1 """
     def outcome(self, action):
         # return int(input("entre 0 1 ou 2"))
         if action == 0:
@@ -73,7 +73,7 @@ class Environment1:
 
 
 class Environment2:
-    """ In Environment 2, action 0 yields oc 1, action 1 yields oc 0 """
+    """ In Environment 2, action 0 yields outcome 1, action 1 yields outcome 0 """
     def outcome(self, action):
         if action == 0:
             return 1
@@ -87,7 +87,7 @@ class env4:
 
 
 class Environment3:
-    """ Environment 3 yields oc 1 only when the agent alternates actions 0 and 1 """
+    """ Environment 3 yields outcome 1 only when the agent alternates actions 0 and 1 """
     def __init__(self):
         """ Initializing Environment3 """
         self.previous_action = 0
@@ -100,7 +100,7 @@ class Environment3:
         return _outcome
 
 
-# TODO Define the hedonist valance of interactions (action, oc)
+# TODO Define the hedonist valance of interactions (action, outcome)
 hedonist_table = [[-1, 1], [-1, 1]]
 # TODO Choose an agent
 a = Agent(hedonist_table)
